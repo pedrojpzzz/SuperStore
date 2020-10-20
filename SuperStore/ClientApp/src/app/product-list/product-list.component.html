@@ -1,0 +1,19 @@
+<h2>Products</h2>
+
+<div *ngFor="let product of products">
+
+  <h3>
+    <a [title]="product.name">
+      {{ product.name }}
+    </a>
+  </h3>
+
+  <h4>ID: {{ product.identifier}}</h4>
+
+  <p>
+    Description: {{ product.description }} <br />
+    Price: {{ product.price }} <br />
+    Stock: {{ product.stock }}
+  </p>
+
+</div>
