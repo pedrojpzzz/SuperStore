@@ -12,6 +12,7 @@ namespace SuperStore
     public class Program
     {
         public static Dictionary<int, Product> ProductVault;
+        public static Dictionary<int, Product> ShoppingCart;
 
         public static void Main(string[] args)
         {
@@ -34,6 +35,8 @@ namespace SuperStore
             ProductVault.Add(2, new Product { Identifier = 2, Name = "TypeScript in Action", Description = "Book about TypeScript", Price = 32.27, Stock = 100 });
             ProductVault.Add(3, new Product { Identifier = 3, Name = "Asp.net Core jump start", Description = "Book about asp.net core", Price = 50.2, Stock = 100 });
             ProductVault.Add(4, new Product { Identifier = 4, Name = "Docker for dummies", Description = "Book about docker", Price = 15.6, Stock = 2 });
+
+            ShoppingCart = new Dictionary<int, Product>();
         }
     }
 }

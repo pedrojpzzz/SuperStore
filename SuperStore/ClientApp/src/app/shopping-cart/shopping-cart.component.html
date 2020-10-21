@@ -1,4 +1,4 @@
-<h2>Products</h2>
+<h2>Shopping Cart</h2>
 
 <div *ngFor="let product of products">
 
@@ -13,9 +13,7 @@
   <p>
     Description: {{ product.description }} <br />
     Price: {{ product.price }} <br />
-    Stock: {{ product.stock }}
+    Quantity: {{ product.stock }}
   </p>
-
-  <button class="btn btn-primary" (click)="addProductToCart(product.identifier, 1)">Add To Cart</button>
 
 </div>
