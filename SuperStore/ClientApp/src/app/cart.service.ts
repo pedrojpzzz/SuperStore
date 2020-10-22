@@ -1,22 +1,31 @@
 import { Injectable } from '@angular/core';
+import { Product } from './product.interface';
+import { isNullOrUndefined } from 'util';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class CartService {
-  items = [];
+  products: Array<Product> = new Array<Product>();
 
-  addToCart(product) {
-    this.items.push(product);
+  addToCart(product: Product) {
+    var productAlreadyInCart = this.products.filter(x => x.identifier == product.identifier);
+
+    if ((productAlreadyInCart.length == 0)) {
+      this.products.push(product);
+    }
+    else {
+      productAlreadyInCart[0].stock += 1;
+    }
   }
 
   getItems() {
-    return this.items;
+    return this.products;
   }
 
   clearCart() {
-    this.items = [];
-    return this.items;
+    this.products = new Array<Product>();
+    return this.products;
   }
 }
