@@ -27,7 +27,6 @@ export class ProductListComponent {
 
   addToCart(product) {
     this.cartService.addToCart(product);
-    window.alert('Your product has been added to the cart!');
   }
 
   public addProductToCart(id: number, quantity: number) {

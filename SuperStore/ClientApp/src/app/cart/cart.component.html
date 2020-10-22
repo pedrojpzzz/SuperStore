@@ -7,9 +7,20 @@
 <body>
   <h3>Cart</h3>
 
-  <div *ngFor="let item of items">
-    <span>{{ item.name }}</span>
-    <span>{{ item.price | currency }}</span>
+  <div *ngFor="let product of products">
+    <h3>
+      <a [title]="product.name">
+        {{ product.name }}
+      </a>
+    </h3>
+
+    <h4>ID: {{ product.identifier }}</h4>
+
+    <p>
+      Description: {{ product.description }} <br />
+      Price: {{ product.price }} <br />
+      Quantity: {{ product.stock }}
+    </p>
   </div>
 </body>
 </html>

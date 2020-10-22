@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Product } from './product.interface';
-import { isNullOrUndefined } from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +12,22 @@ export class CartService {
     var productAlreadyInCart = this.products.filter(x => x.identifier == product.identifier);
 
     if ((productAlreadyInCart.length == 0)) {
-      this.products.push(product);
+      const productToAdd: Product = {
+        identifier: product.identifier,
+        name: product.name,
+        description: product.description,
+        price: product.price,
+        stock: 1
+      }
+
+      this.products.push(productToAdd);
     }
     else {
       productAlreadyInCart[0].stock += 1;
     }
   }
 
-  getItems() {
+  getProducts() {
     return this.products;
   }
 
