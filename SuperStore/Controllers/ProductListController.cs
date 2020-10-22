@@ -10,7 +10,7 @@ namespace SuperStore.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductListController : ControllerBase
     {
         // GET: api/<ProductController>
         [HttpGet]

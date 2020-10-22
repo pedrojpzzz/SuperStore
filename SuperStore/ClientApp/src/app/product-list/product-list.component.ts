@@ -20,7 +20,7 @@ export class ProductListComponent {
 
     this.client = http;
     this.url = baseUrl;
-    http.get<Product[]>(baseUrl + 'product').subscribe(result => {
+    http.get<Product[]>(baseUrl + 'productlist').subscribe(result => {
       this.products = result;
     }, error => console.error(error));
   }
