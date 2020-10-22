@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-product-list-component',
@@ -12,7 +13,10 @@ export class ProductListComponent {
   public client: HttpClient;
   public url: string;
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+  constructor(
+    http: HttpClient,
+    @Inject('BASE_URL') baseUrl: string,
+    private cartService: CartService) {
 
     this.client = http;
     this.url = baseUrl;
@@ -21,15 +25,23 @@ export class ProductListComponent {
     }, error => console.error(error));
   }
 
+  addToCart(product) {
+    this.cartService.addToCart(product);
+    window.alert('Your product has been added to the cart!');
+  }
+
   public addProductToCart(id: number, quantity: number) {
+    var index: number;
+    index = id - 1;
     const productToAdd: Product = {
-      identifier: this.products[id-1].identifier,
-      name: this.products[id].name,
-      description: this.products[id].description,
-      price: this.products[id].price,
+      identifier: this.products[index].identifier,
+      name: this.products[index].name,
+      description: this.products[index].description,
+      price: this.products[index].price,
       stock: quantity
     }
 
+    
     this.client.put<Product>(this.url + 'shoppingcart' + '/' + productToAdd.identifier, productToAdd).subscribe(error => console.error(error));
   }
 }
@@ -41,4 +53,3 @@ interface Product {
     price: number;
     stock: number;
 }
-

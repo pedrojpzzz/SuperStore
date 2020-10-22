@@ -16,7 +16,7 @@ namespace SuperStore.Controllers
         [HttpGet]
         public IEnumerable<Product> Get()
         {
-            return Program.ShoppingCart.Values;
+            return ShoppingCart.GetShoppingCartContent().Values;
         }
 
         // GET api/<ShoppingCartController>/5
@@ -36,7 +36,7 @@ namespace SuperStore.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] Product value)
         {
-            Program.ShoppingCart.Add(id, value);
+            ShoppingCart.AddToCart(value);
         }
 
         // DELETE api/<ShoppingCartController>/5

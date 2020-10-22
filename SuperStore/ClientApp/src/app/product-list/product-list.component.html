@@ -8,7 +8,7 @@
     </a>
   </h3>
 
-  <h4>ID: {{ product.identifier}}</h4>
+  <h4>ID: {{ product.identifier }}</h4>
 
   <p>
     Description: {{ product.description }} <br />
@@ -16,6 +16,6 @@
     Stock: {{ product.stock }}
   </p>
 
-  <button class="btn btn-primary" (click)="addProductToCart(product.identifier, 1)">Add To Cart</button>
+  <button class="btn btn-primary" (click)="addToCart(product)">Add To Cart</button>
 
 </div>

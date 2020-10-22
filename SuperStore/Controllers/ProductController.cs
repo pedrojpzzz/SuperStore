@@ -16,14 +16,14 @@ namespace SuperStore.Controllers
         [HttpGet]
         public IEnumerable<Product> Get()
         {
-            return Program.ProductVault.Values;
+            return ProductList.GetProductList().Values;
         }
 
         // GET api/<ProductController>/5
         [HttpGet("{id}")]
         public Product Get(int id)
         {
-            return Program.ProductVault[id];
+            return ProductList.GetProduct(id);
         }
 
         // POST api/<ProductController>
