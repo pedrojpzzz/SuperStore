@@ -13,13 +13,13 @@
   <p>
     Description: {{ product.description }} <br />
     Price: {{ product.price }} <br />
-    Stock: {{ product.stock }}
+    Stock: {{ product.units }}
   </p>
   <div>
 
     <form (submit)="onSubmit()">
       <label for="quantity">Quantity:</label>
-      <input [(ngModel)]="quantities[product.identifier]" type="number" id="quantity" name="quantity" min="1" max="{{ product.stock }}" value="1">
+      <input [(ngModel)]="quantities[product.identifier]" type="number" id="quantity" name="quantity" min="1" max="{{ product.units }}" value="1">
     </form>
   </div>
   <button class="btn btn-primary" (click)="addToCart(product, quantities[product.identifier])">Add To Cart</button>

@@ -13,8 +13,8 @@ export class CartService {
 
     if ((productAlreadyInCart.length == 0)) {
 
-      if (quantity > product.stock) {
-        quantity = product.stock
+      if (quantity > product.units) {
+        quantity = product.units
       }
 
       const productToAdd: Product = {
@@ -22,16 +22,16 @@ export class CartService {
         name: product.name,
         description: product.description,
         price: product.price,
-        stock: quantity
+        units: quantity
       }
 
       this.products.push(productToAdd);
     }
     else {
-      productAlreadyInCart[0].stock += quantity;
+      productAlreadyInCart[0].units += quantity;
 
-      if (productAlreadyInCart[0].stock > product.stock) {
-        productAlreadyInCart[0].stock = product.stock
+      if (productAlreadyInCart[0].units > product.units) {
+        productAlreadyInCart[0].units = product.units
       }
     }
 
